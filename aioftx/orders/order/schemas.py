@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Optional
-from pydantic import BaseModel, Field
-from ...shared.schemas import Side
+from pydantic import BaseModel, Field, validator
+from aioftx.shared.schemas import Side
 from aioftx.utils.schemas import (
     HTTPMethod,
     PaginatedRequest,
@@ -80,6 +80,9 @@ class GetOrderHistoryResponse(PaginatedResponse[Order]):
     pass
 
 
+""" Orders """
+
+
 class CreateOrderRequest(Request):
     http_method = HTTPMethod.POST
     path = "/orders"
@@ -88,7 +91,7 @@ class CreateOrderRequest(Request):
     side: Side
     size: float
     price: float
-    type: str
+    type: OrderType
     reduce_only: bool
     ioc: bool
     post_only: bool
@@ -106,9 +109,15 @@ class ModifyOrderRequest(Request):
     path = "/orders/{id}/modify"
 
     order_id: int = Field(..., path=True)
-    price: float
-    size: float
+    price: Optional[float]
+    size: Optional[float]
     client_id: Optional[str]
+
+    @validator("price", "size")
+    def check_payload(cls, v: tuple[Optional[float], Optional[float]]):
+        if v[0] is None and v[1] is None:
+            raise ValueError("Either price or size must be specified")
+        return v
 
 
 class ModifyOrderResponse(Response[Order]):
@@ -119,9 +128,15 @@ class ModifyOrderByClientIdRequest(Request):
     http_method = HTTPMethod.POST
     path = "/orders/by_client_id/{client_id}/modify"
 
-    client_id: str
+    client_id: int = Field(..., path=True)
     price: float
     size: float
+
+    @validator("price", "size")
+    def check_payload(cls, v: tuple[Optional[float], Optional[float]]):
+        if v[0] is None and v[1] is None:
+            raise ValueError("Either price or size must be specified")
+        return v
 
 
 class ModifyOrderByClientIdResponse(Response[Order]):
@@ -147,3 +162,7 @@ class CancelAllOrdersRequest(Request):
     side: Optional[str]
     conditional_orders_only: Optional[bool]
     limit_orders_only: Optional[bool]
+
+
+class CancelAllOrdersResponse(Response[str]):
+    pass

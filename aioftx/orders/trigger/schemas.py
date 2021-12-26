@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Optional
 from pydantic import BaseModel, Field
 from ..order.schemas import OrderType
-from ...shared.schemas import Side
+from aioftx.shared.schemas import Side
 from aioftx.utils.schemas import (
     HTTPMethod,
     PaginatedRequest,
@@ -92,7 +92,7 @@ class GetTriggerOrderHistoryResponse(PaginatedResponse[TriggerOrder]):
     has_more_data: bool
 
 
-""" Order """
+""" Trigger Order """
 
 
 class CreateTriggerOrderRequest(Request):

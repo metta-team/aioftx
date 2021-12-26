@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from aioftx.utils.schemas import PaginatedRequest, PaginatedResponse
-from ...shared.schemas import Side
+from aioftx.shared.schemas import Side
 
 
 class Trade(BaseModel):
