@@ -1,6 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel, Field
-from ....utils.schemas import HTTPMethod, Request, Response, PaginatedResponse
+from aioftx.utils.schemas import HTTPMethod, Request, Response, PaginatedResponse
 
 
 class Deposit(BaseModel):

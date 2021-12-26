@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Optional
 from pydantic import BaseModel, Field
 from ...shared.schemas import Side
-from ....utils.schemas import (
+from aioftx.utils.schemas import (
     HTTPMethod,
     PaginatedRequest,
     PaginatedResponse,

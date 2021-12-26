@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from ....utils.schemas import Request, Response
+from aioftx.utils.schemas import Request, Response
 
 
 class FutureStats(BaseModel):

@@ -1,7 +1,7 @@
 from typing import Optional
 from pydantic import BaseModel
 
-from ....utils.schemas import HTTPMethod, Request, Response
+from aioftx.utils.schemas import HTTPMethod, Request, Response
 
 
 class Withdrawal(BaseModel):

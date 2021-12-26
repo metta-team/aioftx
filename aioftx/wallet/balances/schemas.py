@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from ....utils.schemas import (
+from aioftx.utils.schemas import (
     PaginatedRequest,
     PaginatedResponse,
     KeyedPaginatedResponse,
