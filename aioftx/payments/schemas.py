@@ -1,9 +1,8 @@
 from typing import Optional
+
 from pydantic import BaseModel
-from aioftx.utils.schemas import (
-    PaginatedRequest,
-    PaginatedResponse,
-)
+
+from aioftx.utils.schemas import PaginatedRequest, PaginatedResponse
 
 
 class FundingPayment(BaseModel):

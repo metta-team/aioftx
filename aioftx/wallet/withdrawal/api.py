@@ -1,13 +1,10 @@
 from typing import Optional
+
 from aioftx.aioftx.session import FTXClientSession
-from .schemas import (
-    CreateWithdrawalRequest,
-    CreateWithdrawalResponse,
-    GetWithdrawalFeeRequest,
-    GetWithDrawalFeeResponse,
-    Withdrawal,
-    WithdrawalFee,
-)
+
+from .schemas import (CreateWithdrawalRequest, CreateWithdrawalResponse,
+                      GetWithdrawalFeeRequest, GetWithDrawalFeeResponse,
+                      Withdrawal, WithdrawalFee)
 
 
 async def create_withdrawal(

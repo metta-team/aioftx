@@ -1,4 +1,5 @@
 from aioftx.aioftx.session import FTXClientSession
+
 from .schemas import GetOrderbookRequest, GetOrderbookResponse, Orderbook
 
 

@@ -1,10 +1,9 @@
 from aioftx.aioftx.session import FTXClientSession
-from .schemas import (
-    RegisterSignetDepositRequest,
-    RegisterSignetDepositResponse,
-    RegisterSignetWithdrawalRequest,
-    RegisterSignetWithdrawalResponse,
-)
+
+from .schemas import (RegisterSignetDepositRequest,
+                      RegisterSignetDepositResponse,
+                      RegisterSignetWithdrawalRequest,
+                      RegisterSignetWithdrawalResponse)
 
 
 async def register_signet_deposit(

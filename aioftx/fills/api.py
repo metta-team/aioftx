@@ -1,6 +1,8 @@
 from typing import Optional
+
 from aioftx.aioftx.session import FTXClientSession
-from .schemas import Fill, GetFillsRequest, GetFillsReponse, ResponseOrder
+
+from .schemas import Fill, GetFillsReponse, GetFillsRequest, ResponseOrder
 
 
 async def get_fills(

@@ -1,14 +1,11 @@
 from enum import Enum
 from typing import Optional
+
 from pydantic import BaseModel, Field, validator
+
 from aioftx.shared.schemas import Side
-from aioftx.utils.schemas import (
-    HTTPMethod,
-    PaginatedRequest,
-    PaginatedResponse,
-    Request,
-    Response,
-)
+from aioftx.utils.schemas import (HTTPMethod, PaginatedRequest,
+                                  PaginatedResponse, Request, Response)
 
 
 class OrderType(str, Enum):

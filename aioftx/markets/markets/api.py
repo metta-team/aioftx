@@ -1,12 +1,9 @@
 from typing import Optional
+
 from aioftx.aioftx.session import FTXClientSession
-from .schemas import (
-    GetMarketsRequest,
-    GetMarketsResponse,
-    GetMarketResponse,
-    GetMarketRequest,
-    Market,
-)
+
+from .schemas import (GetMarketRequest, GetMarketResponse, GetMarketsRequest,
+                      GetMarketsResponse, Market)
 
 
 async def get_markets(

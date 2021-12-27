@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+
 from aioftx.utils.schemas import Request, Response
 
 

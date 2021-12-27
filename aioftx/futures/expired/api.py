@@ -1,6 +1,9 @@
 from typing import Optional
+
 from aioftx.aioftx.session import FTXClientSession
-from .schemas import ExpiredFuture, GetExpiredFuturesRequest, GetExpiredFuturesResponse
+
+from .schemas import (ExpiredFuture, GetExpiredFuturesRequest,
+                      GetExpiredFuturesResponse)
 
 
 async def get_expired_futures(

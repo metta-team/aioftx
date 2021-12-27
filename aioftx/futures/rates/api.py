@@ -1,10 +1,9 @@
 from typing import Optional
+
 from aioftx.aioftx.session import FTXClientSession
-from .schemas import (
-    FutureFundingRates,
-    GetFutureFundingRatesRequest,
-    GetFutureFundingRatesResponse,
-)
+
+from .schemas import (FutureFundingRates, GetFutureFundingRatesRequest,
+                      GetFutureFundingRatesResponse)
 
 
 async def get_future_funding_rates(

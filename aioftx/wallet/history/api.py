@@ -1,12 +1,10 @@
 from typing import Optional
+
 from aioftx.aioftx.session import FTXClientSession
-from .schemas import (
-    GetDepositHistoryRequest,
-    GetDepositHistoryResponse,
-    GetWithdrawalHistoryRequest,
-    GetWithdrawalHistoryResponse,
-    HistoryItem,
-)
+
+from .schemas import (GetDepositHistoryRequest, GetDepositHistoryResponse,
+                      GetWithdrawalHistoryRequest,
+                      GetWithdrawalHistoryResponse, HistoryItem)
 
 
 async def get_deposit_history(

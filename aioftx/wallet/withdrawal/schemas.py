@@ -1,4 +1,5 @@
 from typing import Optional
+
 from pydantic import BaseModel
 
 from aioftx.utils.schemas import HTTPMethod, Request, Response

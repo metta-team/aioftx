@@ -1,25 +1,17 @@
 from typing import Optional
+
 from aioftx.aioftx.session import FTXClientSession
 from aioftx.shared.schemas import Side
-from .schemas import (
-    Order,
-    GetOrderStatusRequest,
-    GetOrderStatusResponse,
-    GetOpenOrdersRequest,
-    GetOpenOrdersResponse,
-    GetOrderHistoryRequest,
-    GetOrderHistoryResponse,
-    CreateOrderRequest,
-    CreateOrderResponse,
-    ModifyOrderRequest,
-    ModifyOrderResponse,
-    ModifyOrderByClientIdRequest,
-    ModifyOrderByClientIdResponse,
-    CancelOrderRequest,
-    CancelOrderResponse,
-    CancelAllOrdersRequest,
-    CancelAllOrdersResponse,
-)
+
+from .schemas import (CancelAllOrdersRequest, CancelAllOrdersResponse,
+                      CancelOrderRequest, CancelOrderResponse,
+                      CreateOrderRequest, CreateOrderResponse,
+                      GetOpenOrdersRequest, GetOpenOrdersResponse,
+                      GetOrderHistoryRequest, GetOrderHistoryResponse,
+                      GetOrderStatusRequest, GetOrderStatusResponse,
+                      ModifyOrderByClientIdRequest,
+                      ModifyOrderByClientIdResponse, ModifyOrderRequest,
+                      ModifyOrderResponse, Order)
 
 
 async def get_order_status(

@@ -1,10 +1,9 @@
 from typing import Optional
+
 from aioftx.aioftx.session import FTXClientSession
-from .schemas import (
-    GetFundingPaymentsRequest,
-    GetFundingPaymentsResponse,
-    FundingPayment,
-)
+
+from .schemas import (FundingPayment, GetFundingPaymentsRequest,
+                      GetFundingPaymentsResponse)
 
 
 async def get_funding_payments(

@@ -1,24 +1,19 @@
 from typing import Optional
+
 from aioftx.aioftx.session import FTXClientSession
 from aioftx.shared.schemas import Side
+
 from ..order.schemas import OrderType
-from .schemas import (
-    GetTriggerOrderTriggersRequest,
-    GetTriggerOrderTriggersResponse,
-    Trigger,
-    TriggerOrder,
-    GetOpenTriggerOrdersRequest,
-    GetOpenTriggerOrdersResponse,
-    GetTriggerOrderHistoryRequest,
-    GetTriggerOrderHistoryResponse,
-    CreateTriggerOrderRequest,
-    CreateTriggerOrderResponse,
-    ModifyTriggerOrderRequest,
-    ModifyTriggerOrderResponse,
-    CancelTriggerOrderRequest,
-    CancelTriggerOrderResponse,
-    TriggerType,
-)
+from .schemas import (CancelTriggerOrderRequest, CancelTriggerOrderResponse,
+                      CreateTriggerOrderRequest, CreateTriggerOrderResponse,
+                      GetOpenTriggerOrdersRequest,
+                      GetOpenTriggerOrdersResponse,
+                      GetTriggerOrderHistoryRequest,
+                      GetTriggerOrderHistoryResponse,
+                      GetTriggerOrderTriggersRequest,
+                      GetTriggerOrderTriggersResponse,
+                      ModifyTriggerOrderRequest, ModifyTriggerOrderResponse,
+                      Trigger, TriggerOrder, TriggerType)
 
 
 async def get_open_trigger_orders(

@@ -1,13 +1,12 @@
-import time
 import hmac
-
+import time
 from typing import Any, Optional, Type, TypeVar
 
 from aiohttp import ClientSession
 from aiohttp.client import _RequestContextManager  # type: ignore
 from aiohttp.typedefs import StrOrURL
-from ..utils.schemas import Request, Response, HTTPMethod
 
+from ..utils.schemas import HTTPMethod, Request, Response
 
 DataType = TypeVar("DataType")
 ResponseType = Response[DataType]
