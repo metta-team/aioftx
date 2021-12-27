@@ -15,7 +15,7 @@ balances = await get_balances(session)
 
 # (OR) Make request using schemas
 from ftx.api.wallet.schemas import GetBalancesRequest, GetBalancesResponse
-balances = session.make_request(GetBalancesRequest(), response_cls=GetBalancesResponse)
+balances = await session.make_request(GetBalancesRequest(), response_cls=GetBalancesResponse)
 
 
 ```
