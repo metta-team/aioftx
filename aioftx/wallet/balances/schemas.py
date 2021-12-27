@@ -1,7 +1,10 @@
 from pydantic import BaseModel
 
-from aioftx.utils.schemas import (KeyedPaginatedResponse, PaginatedRequest,
-                                  PaginatedResponse)
+from aioftx.utils.schemas import (
+    KeyedPaginatedResponse,
+    PaginatedRequest,
+    PaginatedResponse,
+)
 
 
 class Balance(BaseModel):

@@ -2,9 +2,13 @@ from typing import Optional
 
 from aioftx.aioftx.session import FTXClientSession
 
-from .schemas import (Deposit, GetDepositAddressListRequest,
-                      GetDepositAddressListResponse, GetDepositAddressRequest,
-                      GetDepositAddressResponse)
+from .schemas import (
+    Deposit,
+    GetDepositAddressListRequest,
+    GetDepositAddressListResponse,
+    GetDepositAddressRequest,
+    GetDepositAddressResponse,
+)
 
 
 async def get_deposit_address(

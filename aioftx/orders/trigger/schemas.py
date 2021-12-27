@@ -4,8 +4,13 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 from aioftx.shared.schemas import Side
-from aioftx.utils.schemas import (HTTPMethod, PaginatedRequest,
-                                  PaginatedResponse, Request, Response)
+from aioftx.utils.schemas import (
+    HTTPMethod,
+    PaginatedRequest,
+    PaginatedResponse,
+    Request,
+    Response,
+)
 
 from ..order.schemas import OrderType
 

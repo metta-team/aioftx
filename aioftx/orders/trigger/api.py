@@ -4,16 +4,23 @@ from aioftx.aioftx.session import FTXClientSession
 from aioftx.shared.schemas import Side
 
 from ..order.schemas import OrderType
-from .schemas import (CancelTriggerOrderRequest, CancelTriggerOrderResponse,
-                      CreateTriggerOrderRequest, CreateTriggerOrderResponse,
-                      GetOpenTriggerOrdersRequest,
-                      GetOpenTriggerOrdersResponse,
-                      GetTriggerOrderHistoryRequest,
-                      GetTriggerOrderHistoryResponse,
-                      GetTriggerOrderTriggersRequest,
-                      GetTriggerOrderTriggersResponse,
-                      ModifyTriggerOrderRequest, ModifyTriggerOrderResponse,
-                      Trigger, TriggerOrder, TriggerType)
+from .schemas import (
+    CancelTriggerOrderRequest,
+    CancelTriggerOrderResponse,
+    CreateTriggerOrderRequest,
+    CreateTriggerOrderResponse,
+    GetOpenTriggerOrdersRequest,
+    GetOpenTriggerOrdersResponse,
+    GetTriggerOrderHistoryRequest,
+    GetTriggerOrderHistoryResponse,
+    GetTriggerOrderTriggersRequest,
+    GetTriggerOrderTriggersResponse,
+    ModifyTriggerOrderRequest,
+    ModifyTriggerOrderResponse,
+    Trigger,
+    TriggerOrder,
+    TriggerType,
+)
 
 
 async def get_open_trigger_orders(

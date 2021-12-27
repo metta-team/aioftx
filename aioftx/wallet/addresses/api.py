@@ -2,10 +2,15 @@ from typing import Optional
 
 from aioftx.aioftx.session import FTXClientSession
 
-from .schemas import (CreateSavedAddressRequest, CreateSavedAddressResponse,
-                      DeleteSavedAddressRequest, DeleteSavedAddressResponse,
-                      GetSavedAddressesRequest, GetSavedAddressesResponse,
-                      SavedAddress)
+from .schemas import (
+    CreateSavedAddressRequest,
+    CreateSavedAddressResponse,
+    DeleteSavedAddressRequest,
+    DeleteSavedAddressResponse,
+    GetSavedAddressesRequest,
+    GetSavedAddressesResponse,
+    SavedAddress,
+)
 
 
 async def get_saved_addresses(

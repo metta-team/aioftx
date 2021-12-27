@@ -2,8 +2,13 @@ from typing import Optional
 
 from aioftx.aioftx.session import FTXClientSession
 
-from .schemas import (Balance, GetAllBalancesRequest, GetAllBalancesResponse,
-                      GetBalancesRequest, GetBalancesResponse)
+from .schemas import (
+    Balance,
+    GetAllBalancesRequest,
+    GetAllBalancesResponse,
+    GetBalancesRequest,
+    GetBalancesResponse,
+)
 
 
 async def get_balances(

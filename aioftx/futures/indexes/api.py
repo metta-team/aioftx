@@ -2,9 +2,14 @@ from typing import Optional
 
 from aioftx.aioftx.session import FTXClientSession
 
-from .schemas import (GetHistoricalIndexRequest, GetHistoricalIndexResponse,
-                      GetIndexWeightsRequest, GetIndexWeightsResponse, Index,
-                      IndexWeight)
+from .schemas import (
+    GetHistoricalIndexRequest,
+    GetHistoricalIndexResponse,
+    GetIndexWeightsRequest,
+    GetIndexWeightsResponse,
+    Index,
+    IndexWeight,
+)
 
 
 async def get_index_weights(

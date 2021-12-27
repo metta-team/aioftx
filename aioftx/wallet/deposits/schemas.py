@@ -2,8 +2,7 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from aioftx.utils.schemas import (HTTPMethod, PaginatedResponse, Request,
-                                  Response)
+from aioftx.utils.schemas import HTTPMethod, PaginatedResponse, Request, Response
 
 
 class Deposit(BaseModel):
