@@ -1,5 +1,7 @@
 # FTX Python API
 
+Requires Python `>3.9,<=3.11`
+
 ## Usage
 
 ```
