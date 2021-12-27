@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 from aioftx.types import Side
-from aio.http import PaginatedRequest, PaginatedResponse
+from aioftx.http import PaginatedRequest, PaginatedResponse
 
 
 class Trade(BaseModel):

@@ -1,8 +1,8 @@
 import datetime
 from typing import Optional
 
+from aioftx.http import HTTPMethod, PaginatedResponse, Request, Response
 from aioftx.types import Side
-from aio.http import HTTPMethod, PaginatedResponse, Request, Response
 from pydantic import BaseModel, Field
 
 from ..shared.schemas import Option

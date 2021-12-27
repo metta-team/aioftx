@@ -2,7 +2,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 
-from aio.http import HTTPMethod, Request, Response
+from aioftx.http import HTTPMethod, Request, Response
 
 
 class Withdrawal(BaseModel):

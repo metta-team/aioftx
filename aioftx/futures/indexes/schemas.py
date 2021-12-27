@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 
-from aio.http import PaginatedRequest, PaginatedResponse, Request, Response
+from aioftx.http import PaginatedRequest, PaginatedResponse, Request, Response
 
 
 class IndexWeight(BaseModel):

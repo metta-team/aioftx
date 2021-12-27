@@ -14,6 +14,11 @@ class HTTPMethod(Enum):
     DELETE = "DELETE"
 
 
+class ResponseOrder(str, Enum):
+    ASC = "asc"
+    DESC = "desc"
+
+
 class Request(BaseModel):
     http_method: HTTPMethod = HTTPMethod.GET
     path: str

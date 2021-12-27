@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from aio.http import PaginatedRequest, PaginatedResponse
+from aioftx.http import PaginatedRequest, PaginatedResponse
 
 
 class ExpiredFuture(BaseModel):

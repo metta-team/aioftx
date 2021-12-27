@@ -1,4 +1,4 @@
-from aio.http import PaginatedResponse, Request
+from aioftx.http import PaginatedResponse, Request
 from aioftx.types import Side
 from pydantic import BaseModel
 

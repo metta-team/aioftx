@@ -4,7 +4,7 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 from aioftx.types import Side
-from aio.http import (
+from aioftx.http import (
     HTTPMethod,
     PaginatedRequest,
     PaginatedResponse,

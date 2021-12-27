@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 
-from aio.http import Request, Response
+from aioftx.http import Request, Response
 
 
 class Orderbook(BaseModel):

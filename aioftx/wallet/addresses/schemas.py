@@ -2,7 +2,7 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from aio.http import HTTPMethod, PaginatedResponse, Request, Response
+from aioftx.http import HTTPMethod, PaginatedResponse, Request, Response
 
 
 class SavedAddress(BaseModel):

@@ -1,19 +1,9 @@
 from enum import Enum
 from typing import Optional
 
+from aioftx.http import PaginatedRequest, PaginatedResponse
+from aioftx.types import LiquidityType, Side
 from pydantic import BaseModel
-
-from aio.http import PaginatedRequest, PaginatedResponse
-
-
-class LiquidityType(str, Enum):
-    TAKER = "taker"
-    MAKER = "maker"
-
-
-class ResponseOrder(str, Enum):
-    ASC = "asc"
-    DESC = "desc"
 
 
 class Fill(BaseModel):
@@ -22,14 +12,14 @@ class Fill(BaseModel):
     fee_rate: float
     future: str
     id: int
-    liquidity: str
+    liquidity: LiquidityType
     market: str
     base_currency: str
     quote_currency: str
     order_id: int
     trade_d: int
     price: float
-    side: str
+    side: Side
     size: float
     time: str
     type: str
