@@ -16,6 +16,7 @@ balances = await get_balances(session)
 # (OR) Make request using schemas
 from aioftx.api.wallet.schemas import GetBalancesRequest, GetBalancesResponse
 balances = await session.make_request(GetBalancesRequest(), response_cls=GetBalancesResponse)
+```
 
 ## Todo
 
@@ -24,6 +25,3 @@ balances = await session.make_request(GetBalancesRequest(), response_cls=GetBala
 [] Spot Margin API
 [] NFT API
 [] Latency Stats API
-
-
-```
