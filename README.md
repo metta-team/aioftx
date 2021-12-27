@@ -1,4 +1,4 @@
-# FTX Python API
+# Asyncio FTX Python API
 
 Requires Python `>3.9,<=3.11`
 
