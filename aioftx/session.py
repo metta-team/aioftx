@@ -111,7 +111,7 @@ class FTXClientSession(ClientSession):
         request: Request,
         *,
         response_cls: Optional[Type[Response[DataType]]] = None,
-    ) -> DataType:
+    ) -> Union[DataType, dict[str, Any]]:
         """Make request and parse response if response_cls is provided."""
 
         if request.http_method == HTTPMethod.GET:
