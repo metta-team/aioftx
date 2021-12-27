@@ -1,12 +1,20 @@
 import hmac
 import time
-from typing import Any, Optional, Type, TypeVar
+from types import SimpleNamespace
+from typing import Any, Iterable, Mapping, Optional, Type, TypeVar, Union
 
 from aiohttp import ClientSession
-from aiohttp.client import _RequestContextManager  # type: ignore
-from aiohttp.typedefs import StrOrURL
+from aiohttp.client import ClientResponse, ClientTimeout
+from aiohttp.client_reqrep import Fingerprint
+from aiohttp.helpers import BasicAuth, sentinel
+from aiohttp.typedefs import LooseCookies, LooseHeaders, StrOrURL
 
 from ..utils.schemas import HTTPMethod, Request, Response
+
+try:
+    from ssl import SSLContext
+except ImportError:  # pragma: no cover
+    SSLContext = object  # type: ignore[misc,assignment]
 
 DataType = TypeVar("DataType")
 ResponseType = Response[DataType]
@@ -31,89 +39,97 @@ class FTXClientSession(ClientSession):
             **kwargs,
         )
 
+    async def _request(  # type: ignore
+        self,
+        method: str,
+        str_or_url: StrOrURL,
+        *,
+        params: Optional[Mapping[str, str]] = None,
+        data: Any = None,
+        json: Any = None,
+        cookies: Optional[LooseCookies] = None,
+        headers: Optional[LooseHeaders] = None,
+        skip_auto_headers: Optional[Iterable[str]] = None,
+        auth: Optional[BasicAuth] = None,
+        allow_redirects: bool = True,
+        max_redirects: int = 10,
+        compress: Optional[str] = None,
+        chunked: Optional[bool] = None,
+        expect100: bool = False,
+        raise_for_status: Optional[bool] = None,
+        read_until_eof: bool = True,
+        proxy: Optional[StrOrURL] = None,
+        proxy_auth: Optional[BasicAuth] = None,
+        timeout: Union[ClientTimeout, object] = sentinel,
+        verify_ssl: Optional[bool] = None,
+        fingerprint: Optional[bytes] = None,
+        ssl_context: Optional[SSLContext] = None,
+        ssl: Optional[Union[SSLContext, bool, Fingerprint]] = None,
+        proxy_headers: Optional[LooseHeaders] = None,
+        trace_request_ctx: Optional[SimpleNamespace] = None,
+        read_bufsize: Optional[int] = None,
+    ) -> ClientResponse:
+        """Sign & make request."""
+
+        ts = int(time.time() * 1000)
+        signature_payload = f"{ts}{method}{str_or_url}".encode()
+        signature = hmac.new(
+            self.api_secret.encode(), signature_payload, "sha256"
+        ).hexdigest()
+
+        return await super()._request(
+            method,
+            str_or_url,
+            params=params,
+            data=data,
+            json=json,
+            cookies=cookies,
+            headers={"FTX_TS": str(ts), "FTX-SIGN": signature, **self.headers},
+            skip_auto_headers=skip_auto_headers,
+            auth=auth,
+            allow_redirects=allow_redirects,
+            max_redirects=max_redirects,
+            compress=compress,
+            chunked=chunked,
+            expect100=expect100,
+            raise_for_status=raise_for_status,
+            read_until_eof=read_until_eof,
+            proxy=proxy,
+            proxy_auth=proxy_auth,
+            timeout=timeout,
+            verify_ssl=verify_ssl,
+            fingerprint=fingerprint,
+            ssl_context=ssl_context,
+            ssl=ssl,
+            proxy_headers=proxy_headers,
+            trace_request_ctx=trace_request_ctx,
+            read_bufsize=read_bufsize,
+        )
+
     async def make_request(
         self,
         request: Request,
         *,
         response_cls: Optional[Type[Response[DataType]]] = None,
     ) -> DataType:
-        json_response = None
+        """Make request and parse response if response_cls is provided."""
+
         if request.http_method == HTTPMethod.GET:
             async with self.get(request.url) as resp:
                 json_response = await resp.json()
         elif request.http_method == HTTPMethod.POST:
-            async with self.get(request.url, data=request.json()) as resp:
+            async with self.post(request.url, data=request.json()) as resp:
                 json_response = await resp.json()
-
-        if json_response is None:
-            raise Exception("Request failed")
+        elif request.http_method == HTTPMethod.PUT:
+            async with self.put(request.url, data=request.json()) as resp:
+                json_response = await resp.json()
+        elif request.http_method == HTTPMethod.DELETE:
+            async with self.delete(request.url) as resp:
+                json_response = await resp.json()
+        else:
+            raise ValueError(f"Unsupported HTTP method: {request.http_method}")
 
         if response_cls:
             return response_cls(**json_response).data()
         else:
             return json_response
-
-    def get(
-        self, url: StrOrURL, *, allow_redirects: bool = True, **kwargs: Any
-    ) -> _RequestContextManager:
-        """Perform HTTP GET request."""
-        ts = int(time.time() * 1000)
-        signature_payload = f"{ts}GET{url}".encode()
-        signature = hmac.new(
-            self.api_secret.encode(), signature_payload, "sha256"
-        ).hexdigest()
-
-        return super().get(
-            url,
-            allow_redirects=allow_redirects,
-            headers={"FTX_TS": ts, "FTX-SIGN": signature, **self.headers},
-            **kwargs,
-        )
-
-    def post(
-        self, url: StrOrURL, *, data: Any = None, **kwargs: Any
-    ) -> _RequestContextManager:
-        """Perform HTTP POST request."""
-        ts = int(time.time() * 1000)
-        signature_payload = f"{ts}POST{url}".encode()
-        signature = hmac.new(
-            self.api_secret.encode(), signature_payload, "sha256"
-        ).hexdigest()
-
-        return super().post(
-            url,
-            data=data,
-            headers={"FTX_TS": ts, "FTX-SIGN": signature, **self.headers},
-            **kwargs,
-        )
-
-    def put(
-        self, url: StrOrURL, *, data: Any = None, **kwargs: Any
-    ) -> _RequestContextManager:
-        """Perform HTTP PUT request."""
-        ts = int(time.time() * 1000)
-        signature_payload = f"{ts}PUT{url}".encode()
-        signature = hmac.new(
-            self.api_secret.encode(), signature_payload, "sha256"
-        ).hexdigest()
-
-        return super().put(
-            url,
-            data=data,
-            headers={"FTX_TS": ts, "FTX-SIGN": signature, **self.headers},
-            **kwargs,
-        )
-
-    def delete(self, url: StrOrURL, **kwargs: Any) -> _RequestContextManager:
-        """Perform HTTP DELETE request."""
-        ts = int(time.time() * 1000)
-        signature_payload = f"{ts}DELETE{url}".encode()
-        signature = hmac.new(
-            self.api_secret.encode(), signature_payload, "sha256"
-        ).hexdigest()
-
-        return super().delete(
-            url,
-            headers={"FTX_TS": ts, "FTX-SIGN": signature, **self.headers},
-            **kwargs,
-        )
