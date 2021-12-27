@@ -9,7 +9,7 @@ from aiohttp.client_reqrep import Fingerprint
 from aiohttp.helpers import BasicAuth, sentinel
 from aiohttp.typedefs import LooseCookies, LooseHeaders, StrOrURL
 
-from ..utils.schemas import HTTPMethod, Request, Response
+from .http import HTTPMethod, Request, Response
 
 try:
     from ssl import SSLContext
@@ -27,7 +27,7 @@ class FTXClientSession(ClientSession):
         api_key: str,
         api_secret: str,
         base_url: str = "https://api.ftx.com/",
-        **kwargs,  # type: ignore
+        **kwargs: dict[str, Any],
     ) -> None:
         self.api_secret = api_secret
 
@@ -36,7 +36,7 @@ class FTXClientSession(ClientSession):
             headers={
                 "FTX-KEY": api_key,
             },
-            **kwargs,
+            **kwargs,  # type: ignore
         )
 
     async def _request(  # type: ignore
