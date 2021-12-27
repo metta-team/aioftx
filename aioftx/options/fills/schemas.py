@@ -1,6 +1,6 @@
 import datetime
 
-from aioftx.http import PaginatedRequest, PaginatedResponse, Request
+from aioftx.http import PaginatedRequest, PaginatedResponse
 from aioftx.types import LiquidityType, Side
 from pydantic import BaseModel
 
