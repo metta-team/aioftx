@@ -1,4 +1,4 @@
-from aioftx.aioftx.session import FTXClientSession
+from aioftx.session import FTXClientSession
 
 from .schemas import (
     RegisterSignetDepositRequest,

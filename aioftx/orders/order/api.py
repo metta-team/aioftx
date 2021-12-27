@@ -1,7 +1,7 @@
 from typing import Optional
 
-from aioftx.aioftx.session import FTXClientSession
-from aioftx.shared.schemas import Side
+from aioftx.session import FTXClientSession
+from aioftx.types import Side
 
 from .schemas import (
     CancelAllOrdersRequest,

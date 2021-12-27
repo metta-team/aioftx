@@ -1,13 +1,11 @@
 import datetime
-from enum import Enum
 from typing import Optional
 
-from aioftx.shared.schemas import Side
-from aioftx.utils.schemas import HTTPMethod, PaginatedResponse, Request, Response
+from aioftx.types import Side
+from aio.http import HTTPMethod, PaginatedResponse, Request, Response
 from pydantic import BaseModel, Field
-from pydantic.networks import HttpUrl
 
-from ..quote_request.schemas import Option
+from ..shared.schemas import Option
 
 
 class Quote(BaseModel):
@@ -19,8 +17,8 @@ class Quote(BaseModel):
     quote_expiry: Optional[datetime.datetime]
     quoter_side: Side
     time: datetime.datetime
-    request_id: int
-    request_side: Side
+    request_id: Optional[int]
+    request_side: Optional[Side]
 
 
 class GetQuotesRequest(Request):
@@ -50,4 +48,26 @@ class CreateQuoteRequest(Request):
 
 
 class CreateQuoteResponse(Response[Quote]):
+    pass
+
+
+class CancelQuoteRequest(Request):
+    http_method = HTTPMethod.DELETE
+    path = "/options/quotes/{quote_id}"
+
+    quote_id: str = Field(..., path=True)
+
+
+class CancelQuoteResponse(Response[Quote]):
+    pass
+
+
+class AcceptQuoteRequest(Request):
+    http_method = HTTPMethod.POST
+    path = "/options/quotes/{quote_id}/accept"
+
+    quote_id: str = Field(..., path=True)
+
+
+class AcceptQuoteResponse(Response[Quote]):
     pass

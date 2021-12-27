@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 
-from aioftx.utils.schemas import HTTPMethod, Response
+from aio.http import HTTPMethod, Response
 
 
 class RegisterSignetDepositRequest(BaseModel):

@@ -1,7 +1,9 @@
 from typing import Optional
 
-from aioftx.aioftx.session import FTXClientSession
+from aioftx.session import FTXClientSession
+from aioftx.types import Side
 
+from ..shared.schemas import OptionType
 from .schemas import (
     CreateQuoteRequestRequest,
     CreateQuoteRequestResponse,
@@ -12,7 +14,6 @@ from .schemas import (
     GetQuoteRequestsRequest,
     GetQuoteRequestsResponse,
     MyQuoteRequest,
-    OptionType,
     QuoteRequest,
 )
 
@@ -48,7 +49,7 @@ async def create_quote_request(
     type: OptionType,
     strike: float,
     expiry: int,
-    side: str,
+    side: Side,
     size: float,
     limit_price: Optional[float] = None,
     hide_limit_price: bool = True,

@@ -1,35 +1,12 @@
 import datetime
-from enum import Enum
 from typing import Optional
 
-from aioftx.shared.schemas import Side
-from aioftx.utils.schemas import HTTPMethod, PaginatedResponse, Request, Response
+from aioftx.types import Side
+from aio.http import HTTPMethod, PaginatedResponse, Request, Response
 from pydantic import BaseModel, Field
 
-
-class OptionType(str, Enum):
-    CALL = "call"
-    PUT = "put"
-
-
-class OptionStatus(str, Enum):
-    OPEN = "open"
-
-
-class Option(BaseModel):
-    underlying: str
-    type: OptionType
-    strike: float
-    expiry: str
-
-
-class Quote(BaseModel):
-    id: int
-    status: OptionStatus
-    collateral: float
-    price: float
-    quote_expiry: Optional[datetime.datetime]
-    time: datetime.datetime
+from ..quotes.schemas import Quote
+from ..shared.schemas import Option, OptionStatus, OptionType
 
 
 class QuoteRequest(BaseModel):

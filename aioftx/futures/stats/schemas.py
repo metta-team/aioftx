@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 
-from aioftx.utils.schemas import Request, Response
+from aio.http import Request, Response
 
 
 class FutureStats(BaseModel):

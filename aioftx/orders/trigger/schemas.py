@@ -3,8 +3,8 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from aioftx.shared.schemas import Side
-from aioftx.utils.schemas import (
+from aioftx.types import Side
+from aio.http import (
     HTTPMethod,
     PaginatedRequest,
     PaginatedResponse,

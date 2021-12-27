@@ -1,6 +1,6 @@
 from typing import Optional
 
-from aioftx.aioftx.session import FTXClientSession
+from aioftx.session import FTXClientSession
 
 from .schemas import (
     Future,

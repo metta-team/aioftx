@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 
-from aioftx.utils.schemas import PaginatedRequest, PaginatedResponse
+from aio.http import PaginatedRequest, PaginatedResponse
 
 
 class Price(BaseModel):

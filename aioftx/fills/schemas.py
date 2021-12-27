@@ -3,7 +3,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 
-from aioftx.utils.schemas import PaginatedRequest, PaginatedResponse
+from aio.http import PaginatedRequest, PaginatedResponse
 
 
 class LiquidityType(str, Enum):
