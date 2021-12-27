@@ -21,7 +21,11 @@ balances = await session.make_request(GetBalancesRequest(), response_cls=GetBala
 ## Todo
 
 [] Staking API
+
 [] OTC Quotes API
+
 [] Spot Margin API
+
 [] NFT API
+
 [] Latency Stats API
